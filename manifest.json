@@ -1,9 +1,37 @@
 {
-    "manifest_version" : 3,
-    "name" : "Fast Read Exporter",
-    "description" : "Text to Video Converter",
-    "version" : 0.0,
-    "action" : {
-
-    }
-}
+    "manifest_version": 3,
+    "name": "Text-to-Video Converter",
+    "version": "2.1",
+    "description": "Convert text to short animation clips that flashes each word with customizable speed and font size.",
+    "icons": {
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
+    },
+    "action": {
+        "default_icon": {
+            "48": "icon/icon48.png",
+            "128": "icon/icon128.png"
+          },
+        "default_popup": "popup.html",
+        "default_title": "Text-to-Video Converter"
+    },
+    "permissions": [
+      "activeTab"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["contentScript.js"]
+      }
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+          "resources": ["icon.png"],
+          "matches": ["<all_urls>"]
+        }
+      ]
+  }
+  
